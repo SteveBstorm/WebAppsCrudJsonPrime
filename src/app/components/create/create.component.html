@@ -1,0 +1,28 @@
+<h3>Création d'un fan</h3>
+<hr />
+<form [formGroup]="fg" (ngSubmit)="submitForm()">
+    <fieldset header="Info perso">
+        <p>
+            Nom : <input type="text" formControlName="nom" />
+            <span *ngIf="fg.controls['nom'].invalid && !fg.controls['nom'].pristine" style="color : red">
+                Nom est requis
+            </span>
+        </p>
+        <p>
+            Date de naissance : <input type="date" formControlName="bday" />
+            <span *ngIf="fg.controls['bday'].invalid && fg.controls['bday'].errors" style="color : red">
+                {{fg.controls['bday'].errors['dateError']}}
+            </span>
+        </p>
+    </fieldset>
+    <fieldset legend="Series préférées">
+        <button type="button" (click)="addSerie()">Ajouter une série</button>
+        <div *ngIf="getSeries().controls" formArrayName="series">
+            <p *ngFor="let c of getSeries().controls; let i = index">
+                Série {{i+1}} <input type="text" [formControlName]="i">
+                 <button type="button" (click)="removeSerie(i)">X</button>
+            </p>
+        </div>
+    </fieldset>
+    <button type="submit" [disabled]="fg.invalid">Valider</button>
+</form>

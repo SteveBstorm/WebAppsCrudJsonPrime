@@ -1,0 +1,13 @@
+<h3>
+    Détail de {{currentFan.name}}
+</h3>
+<fieldset *ngIf="currentFan">
+    <p>Date de naissance : {{currentFan.bday | date : 'dd MM yyyy'}}</p>
+    <div>
+        <ul>
+            <li *ngFor="let s of currentFan.series">
+                {{s}}
+            </li>
+        </ul>
+    </div>
+</fieldset>

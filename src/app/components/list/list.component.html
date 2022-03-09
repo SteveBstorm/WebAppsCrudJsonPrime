@@ -1,0 +1,16 @@
+<h3>Liste de fan</h3>
+
+<table style="border : 1px solid black">
+    <tr>
+        <th style="border : 1px solid black">Nom du fan</th>
+        <th style="border : 1px solid black">Actions</th>
+    </tr>
+    <tr *ngFor="let f of listView; let i = index">
+        <td>{{f.name}}</td>
+        <td>
+            <button (click)="detail(i)">Details</button> &nbsp; 
+            <button (click)="modifier(i)">Modifier</button> &nbsp; 
+            <button (click)="supprimer(i)">X</button>
+        </td>
+    </tr>
+</table>
