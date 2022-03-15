@@ -23,8 +23,18 @@ export class UpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.currentFan = this._fanService.getById(this._ar.snapshot.params['id'])
+    let id = this._ar.snapshot.params['id']
+    this._fanService.getById(id).subscribe( {
+      next : (data : Fan) => {
+        this.currentFan = data
+        this.initForm()
+      }
+    })
     
+    
+  }
+
+  initForm() {
     this.fg = this._builder.group({
       nom : [this.currentFan.name, Validators.required],
       bday : [this.currentFan.bday, [Validators.required, minAge(13)]],
@@ -46,12 +56,13 @@ export class UpdateComponent implements OnInit {
 
   submitForm() {
     let newFan : Fan = {
+      id : this._ar.snapshot.params['id'],
       name : this.fg.value['nom'],
       bday : this.fg.value['bday'],
       series : this.fg.value['series'] ? this.fg.value['series'] : [] 
     }
 
-    this._fanService.saveFan(newFan, this._ar.snapshot.params['id'])
+    this._fanService.updateFan(newFan)
   }
 
   removeSerie(index : number) : void {

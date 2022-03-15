@@ -1,16 +1,23 @@
 <h3>Liste de fan</h3>
 
-<table style="border : 1px solid black">
-    <tr>
-        <th style="border : 1px solid black">Nom du fan</th>
-        <th style="border : 1px solid black">Actions</th>
-    </tr>
-    <tr *ngFor="let f of listView; let i = index">
-        <td>{{f.name}}</td>
-        <td>
-            <button (click)="detail(i)">Details</button> &nbsp; 
-            <button (click)="modifier(i)">Modifier</button> &nbsp; 
-            <button (click)="supprimer(i)">X</button>
-        </td>
-    </tr>
-</table>
+<p-table [value]="listView" styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="caption">
+        Liste de fan
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="border : 1px solid black">Nom du fan</th>
+            <th style="border : 1px solid black">Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template let-f pTemplate="body">
+        <tr>
+            <td>{{f.name}}</td>
+            <td>
+                <button pButton (click)="detail(f.id)" class="p-button-sm" icon="pi pi-file" label="Détails"></button> &nbsp; 
+                <button pButton (click)="modifier(f.id)" class="p-button-sm">Modifier</button> &nbsp; 
+                <button pButton (click)="supprimer(f.id)" class="p-button-sm" icon="pi pi-trash"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

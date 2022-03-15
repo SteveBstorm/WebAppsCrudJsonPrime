@@ -1,9 +1,7 @@
-<header style="background-color : lightgrey;">
-  <h2>Gestion de fan</h2>
-  <a routerLink="create">Ajouter un fan</a> | 
-  <a routerLink="list">Liste de fan</a>
-</header>
-<hr />
+<h2>Gestion de fan</h2>
+<p-menubar [model]="menuList"></p-menubar>
+
+
 <div class="content">
   <router-outlet></router-outlet>
 </div>

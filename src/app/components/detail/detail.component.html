@@ -1,7 +1,5 @@
-<h3>
-    Détail de {{currentFan.name}}
-</h3>
-<fieldset *ngIf="currentFan">
+
+<p-fieldset [legend]="currentFan.name" *ngIf="currentFan">
     <p>Date de naissance : {{currentFan.bday | date : 'dd MM yyyy'}}</p>
     <div>
         <ul>
@@ -10,4 +8,4 @@
             </li>
         </ul>
     </div>
-</fieldset>
+</p-fieldset>

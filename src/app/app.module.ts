@@ -9,6 +9,19 @@ import { CreateComponent } from './components/create/create.component';
 import { UpdateComponent } from './components/update/update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import {TableModule} from 'primeng/table';
+import {DialogModule} from 'primeng/dialog';
+import { DialogService } from 'primeng/dynamicdialog';
+import { FieldsetModule} from 'primeng/fieldset';
+import {MenubarModule } from 'primeng/menubar';
+import {CalendarModule} from 'primeng/calendar';
+
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,10 +33,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    InputTextModule,
+    TableModule,
+    ScrollingModule,
+    DialogModule,
+    FieldsetModule,
+    MenubarModule,
+    CalendarModule
+
   ],
-  providers: [],
+  providers: [DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
